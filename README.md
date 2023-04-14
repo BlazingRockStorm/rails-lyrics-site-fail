@@ -9,5 +9,5 @@
 
 TODO:
 
--[] Setup Github actions for Rubocop check
--[] Setup code coverage
+- [x]  Setup Github actions for Rubocop check -> Pronto
+- [] Setup code coverage
