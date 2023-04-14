@@ -6,5 +6,7 @@
 - Rails 6
 - ReactJS for front-end
 - RSpec for test
-- Setup Github actions for Rubocop check
-- Setup code coverage
+
+TODO:
+[]- Setup Github actions for Rubocop check
+[]- Setup code coverage
