@@ -8,5 +8,6 @@
 - RSpec for test
 
 TODO:
+
 []- Setup Github actions for Rubocop check
 []- Setup code coverage
