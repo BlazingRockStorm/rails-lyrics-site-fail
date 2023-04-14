@@ -74,3 +74,6 @@ RSpec/ImplicitSubject:
 
 RSpec/NamedSubject:
   Enabled: false
+
+Rails/I18nLocaleTexts:
+  Enabled: false
