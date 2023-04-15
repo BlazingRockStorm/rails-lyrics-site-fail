@@ -4,9 +4,12 @@ require 'rails_helper'
 
 RSpec.describe 'Genres' do
   describe 'GET /index' do
+    let!(:genres) { create_list(:genre, 4) }
+
     it 'show all genres' do
       get genres_path
       expect(response).to render_template(:index)
+      expect(response.body).to include(genres[0].name, genres[1].name, genres[2].name)
     end
   end
 
