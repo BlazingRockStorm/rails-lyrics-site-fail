@@ -9,7 +9,9 @@ class GenresController < ApplicationController
   end
 
   # GET /genres/1 or /genres/1.json
-  def show; end
+  def show
+    render json: @genre
+  end
 
   # GET /genres/new
   def new

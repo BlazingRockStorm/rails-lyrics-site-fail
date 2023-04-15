@@ -13,11 +13,23 @@ RSpec.describe 'Genres' do
     end
   end
 
-  # describe 'GET /show' do
-  # end
+  describe 'GET /show' do
+    let(:genre) { create(:genre) }
 
-  # describe 'GET /new' do
-  # end
+    it "show a genre's json" do
+      get genre_path(genre)
+      expect(response).to have_http_status(:ok)
+      expect(response.content_type).to include('application/json')
+      expect(response.body).to include(genre.name)
+    end
+  end
+
+  describe 'GET /new' do
+    it 'leads to new genre page' do
+      get new_genre_path
+      expect(response).to render_template(:new)
+    end
+  end
 
   # describe 'POST /create' do
   # end
