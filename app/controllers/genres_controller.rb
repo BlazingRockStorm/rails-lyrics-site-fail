@@ -9,7 +9,9 @@ class GenresController < ApplicationController
   end
 
   # GET /genres/1 or /genres/1.json
-  def show; end
+  def show
+    render json: @genre
+  end
 
   # GET /genres/new
   def new
@@ -25,11 +27,8 @@ class GenresController < ApplicationController
 
     respond_to do |format|
       if @genre.save
-        format.html { redirect_to genre_url(@genre), notice: 'Genre was successfully created.' }
+        format.html { redirect_to genres_url, notice: 'Genre was successfully created.' }
         format.json { render :show, status: :created, location: @genre }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @genre.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -38,11 +37,8 @@ class GenresController < ApplicationController
   def update
     respond_to do |format|
       if @genre.update(genre_params)
-        format.html { redirect_to genre_url(@genre), notice: 'Genre was successfully updated.' }
+        format.html { redirect_to genres_url, notice: 'Genre was successfully updated.' }
         format.json { render :show, status: :ok, location: @genre }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @genre.errors, status: :unprocessable_entity }
       end
     end
   end

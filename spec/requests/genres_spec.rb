@@ -4,27 +4,70 @@ require 'rails_helper'
 
 RSpec.describe 'Genres' do
   describe 'GET /index' do
+    let!(:genres) { create_list(:genre, 4) }
+
     it 'show all genres' do
-      get '/genres'
+      get genres_path
       expect(response).to render_template(:index)
+      expect(response.body).to include(genres[0].name, genres[1].name, genres[2].name)
     end
   end
 
-  # describe 'GET /show' do
-  # end
+  describe 'GET /show' do
+    let(:genre) { create(:genre) }
 
-  # describe 'GET /new' do
-  # end
+    it "show a genre's json" do
+      get genre_path(genre)
+      expect(response).to have_http_status(:ok)
+      expect(response.content_type).to include('application/json')
+      expect(response.body).to include(genre.name)
+    end
+  end
 
-  # describe 'POST /create' do
-  # end
+  describe 'GET /new' do
+    it 'leads to new genre page' do
+      get new_genre_path
+      expect(response).to render_template(:new)
+    end
+  end
 
-  # describe 'GET /edit' do
-  # end
+  describe 'POST /create' do
+    it 'creates new genre' do
+      post genres_path, params: { genre: { name: 'New Genre' } }
+      expect(response).to redirect_to genres_path
+      get genres_path
+      expect(response.body).to include('New Genre')
+    end
+  end
 
-  # describe 'PUT/PATCH /update' do
-  # end
+  describe 'GET /edit' do
+    let(:genre) { create(:genre) }
 
-  # describe 'DELETE /delete' do
-  # end
+    it 'leads to edit genre page' do
+      get edit_genre_path(genre)
+      expect(response).to render_template(:edit)
+    end
+  end
+
+  describe 'PUT/PATCH /update' do
+    let(:genre) { create(:genre) }
+
+    it "edit the genre's name" do
+      put genre_path(genre), params: { id: genre.id, genre: { name: 'Editted Genre' } }
+      expect(response).to redirect_to genres_path
+      get genres_path
+      expect(response.body).to include('Editted Genre')
+    end
+  end
+
+  describe 'DELETE /delete' do
+    let(:genre) { create(:genre) }
+
+    it 'leads to edit genre page' do
+      delete genre_path(genre), params: { id: genre.id }
+      expect(response).to redirect_to genres_path
+      get genres_path
+      expect(response.body).not_to include(genre.name)
+    end
+  end
 end
