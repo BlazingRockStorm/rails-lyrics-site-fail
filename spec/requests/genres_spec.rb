@@ -31,11 +31,23 @@ RSpec.describe 'Genres' do
     end
   end
 
-  # describe 'POST /create' do
-  # end
+  describe 'POST /create' do
+    it 'creates new genre' do
+      post '/genres', params: { genre: { name: 'New Genre' } }
+      expect(response).to redirect_to genres_path
+      get genres_path
+      expect(response.body).to include('New Genre')
+    end
+  end
 
-  # describe 'GET /edit' do
-  # end
+  describe 'GET /edit' do
+    let(:genre) { create(:genre) }
+
+    it 'leads to edit genre page' do
+      get edit_genre_path(genre)
+      expect(response).to render_template(:edit)
+    end
+  end
 
   # describe 'PUT/PATCH /update' do
   # end
