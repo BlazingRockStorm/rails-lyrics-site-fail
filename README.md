@@ -6,6 +6,7 @@
 - Rails 7
 - ReactJS for front-end
 - RSpec for test
+- Coding Convention, Code Coverage
 
 ## Why
 
@@ -34,5 +35,8 @@
 
 ## TODO:
 
-- [x]  Setup Github actions for Rubocop check -> Pronto
-- [ ] Setup code coverage
+- [x] Setup Github actions for Rubocop check -> Pronto
+- [x] Setup code coverage
+- [ ] Add an admin template
+- [ ] Add songs
+- [ ] Setup JS
