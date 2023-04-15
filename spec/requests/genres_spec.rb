@@ -33,7 +33,7 @@ RSpec.describe 'Genres' do
 
   describe 'POST /create' do
     it 'creates new genre' do
-      post '/genres', params: { genre: { name: 'New Genre' } }
+      post genres_path, params: { genre: { name: 'New Genre' } }
       expect(response).to redirect_to genres_path
       get genres_path
       expect(response.body).to include('New Genre')
@@ -49,9 +49,25 @@ RSpec.describe 'Genres' do
     end
   end
 
-  # describe 'PUT/PATCH /update' do
-  # end
+  describe 'PUT/PATCH /update' do
+    let(:genre) { create(:genre) }
 
-  # describe 'DELETE /delete' do
-  # end
+    it "edit the genre's name" do
+      put genre_path(genre), params: { id: genre.id, genre: { name: 'Editted Genre' } }
+      expect(response).to redirect_to genres_path
+      get genres_path
+      expect(response.body).to include('Editted Genre')
+    end
+  end
+
+  describe 'DELETE /delete' do
+    let(:genre) { create(:genre) }
+
+    it 'leads to edit genre page' do
+      delete genre_path(genre), params: { id: genre.id }
+      expect(response).to redirect_to genres_path
+      get genres_path
+      expect(response.body).not_to include('Editted Genre')
+    end
+  end
 end
