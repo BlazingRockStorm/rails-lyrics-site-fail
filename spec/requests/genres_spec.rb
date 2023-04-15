@@ -67,7 +67,7 @@ RSpec.describe 'Genres' do
       delete genre_path(genre), params: { id: genre.id }
       expect(response).to redirect_to genres_path
       get genres_path
-      expect(response.body).not_to include('Editted Genre')
+      expect(response.body).not_to include(genre.name)
     end
   end
 end
