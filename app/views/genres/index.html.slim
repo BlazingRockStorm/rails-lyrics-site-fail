@@ -6,6 +6,7 @@ h1 Genres
   - @genres.each do |genre|
     == render genre
     p
-      = link_to "Show this genre", genre
+      = link_to "Edit this genre", edit_genre_path(genre)
+    = button_to "Destroy this genre", genre, method: :delete
 
 = link_to "New genre", new_genre_path

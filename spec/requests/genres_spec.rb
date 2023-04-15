@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'Genres' do
   describe 'GET /index' do
     it 'show all genres' do
-      get '/genres'
+      get genres_path
       expect(response).to render_template(:index)
     end
   end
