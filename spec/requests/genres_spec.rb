@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Genres' do
-  describe 'GET /index' do
+  describe 'GET #index' do
     let!(:genres) { create_list(:genre, 4) }
 
     it 'show all genres' do
@@ -13,7 +13,7 @@ RSpec.describe 'Genres' do
     end
   end
 
-  describe 'GET /show' do
+  describe 'GET #show' do
     let(:genre) { create(:genre) }
 
     it "show a genre's json" do
@@ -24,14 +24,14 @@ RSpec.describe 'Genres' do
     end
   end
 
-  describe 'GET /new' do
+  describe 'GET #new' do
     it 'leads to new genre page' do
       get new_genre_path
       expect(response).to render_template(:new)
     end
   end
 
-  describe 'POST /create' do
+  describe 'POST #create' do
     it 'creates new genre' do
       post genres_path, params: { genre: { name: 'New Genre' } }
       expect(response).to redirect_to genres_path
@@ -40,7 +40,7 @@ RSpec.describe 'Genres' do
     end
   end
 
-  describe 'GET /edit' do
+  describe 'GET #edit' do
     let(:genre) { create(:genre) }
 
     it 'leads to edit genre page' do
@@ -49,7 +49,7 @@ RSpec.describe 'Genres' do
     end
   end
 
-  describe 'PUT/PATCH /update' do
+  describe 'PUT/PATCH #update' do
     let(:genre) { create(:genre) }
 
     it "edit the genre's name" do
@@ -60,7 +60,7 @@ RSpec.describe 'Genres' do
     end
   end
 
-  describe 'DELETE /delete' do
+  describe 'DELETE #delete' do
     let(:genre) { create(:genre) }
 
     it 'leads to edit genre page' do
