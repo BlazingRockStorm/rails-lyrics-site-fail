@@ -38,5 +38,5 @@
 - [x] Setup Github actions for Rubocop check -> Pronto
 - [x] Setup code coverage
 - [ ] Add an admin template
-- [ ] Add songs
+- [x] Add songs
 - [ ] Setup JS
