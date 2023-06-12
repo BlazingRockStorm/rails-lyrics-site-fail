@@ -36,7 +36,7 @@ RSpec.describe 'Songs' do
     let(:genre) { create(:genre) }
 
     it 'creates new song' do
-      post songs_path, params: { song: { name: 'New song', lyric: "Song's lyric", genre: genre } }
+      post songs_path, params: { song: { name: 'New song', lyric: "Song's lyric", genre: } }
       get songs_path
       expect(response.body).to include('New song')
     end
@@ -56,7 +56,7 @@ RSpec.describe 'Songs' do
     let(:song) { create(:song) }
 
     it "edit the song's name" do
-      put song_path(song), params: { id: song.id, song: { name: 'Editted song', lyric: "Editted song's lyric", genre: genre } }
+      put song_path(song), params: { id: song.id, song: { name: 'Editted song', lyric: "Editted song's lyric", genre: } }
       expect(response).to redirect_to song_path(song)
       get song_path(song)
       expect(response.body).to include('Editted song')
