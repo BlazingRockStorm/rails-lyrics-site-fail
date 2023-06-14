@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   get 'welcome/index'
   root 'welcome#index'
 
-  resources :genres
+  namespace :admin do
+    resources :genres
+  end
   resources :songs
 
   namespace :api do
