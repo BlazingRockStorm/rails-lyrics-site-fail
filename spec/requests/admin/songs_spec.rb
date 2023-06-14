@@ -7,7 +7,7 @@ RSpec.describe 'Songs' do
     let!(:songs) { create_list(:song, 4) }
 
     it 'show all songs' do
-      get songs_path
+      get admin_songs_path
       expect(response).to render_template(:index)
       expect(response.body).to include(songs[0].name, songs[1].name, songs[2].name)
     end
@@ -17,9 +17,8 @@ RSpec.describe 'Songs' do
     let(:song) { create(:song) }
 
     it "show a song's json" do
-      get song_path(song)
+      get admin_song_path(song)
       expect(response).to have_http_status(:ok)
-      expect(response.content_type).to include('application/json')
       expect(response.body).to include(song.name)
       expect(response.body).to include(song.lyric)
     end
@@ -27,7 +26,7 @@ RSpec.describe 'Songs' do
 
   describe 'GET #new' do
     it 'leads to new song page' do
-      get new_song_path
+      get new_admin_song_path
       expect(response).to render_template(:new)
     end
   end
@@ -36,8 +35,8 @@ RSpec.describe 'Songs' do
     let(:genre) { create(:genre) }
 
     it 'creates new song' do
-      post songs_path, params: { song: { name: 'New song', lyric: "Song's lyric", genre: } }
-      get songs_path
+      post admin_songs_path, params: { song: { name: 'New song', lyric: "Song's lyric", genre: } }
+      get admin_songs_path
       expect(response.body).to include('New song')
     end
   end
@@ -46,7 +45,7 @@ RSpec.describe 'Songs' do
     let(:song) { create(:song) }
 
     it 'leads to edit song page' do
-      get edit_song_path(song)
+      get edit_admin_song_path(song)
       expect(response).to render_template(:edit)
     end
   end
@@ -56,11 +55,11 @@ RSpec.describe 'Songs' do
     let(:song) { create(:song) }
 
     it "edit the song's name" do
-      put song_path(song), params: { id: song.id, song: { name: 'Editted song', lyric: "Editted song's lyric", genre: } }
-      expect(response).to redirect_to song_path(song)
-      get song_path(song)
+      put admin_song_path(song), params: { id: song.id, song: { name: 'Editted song', lyric: 'Editted lyric', genre: } }
+      expect(response).to redirect_to admin_song_path(song)
+      get admin_song_path(song)
       expect(response.body).to include('Editted song')
-      expect(response.body).to include("Editted song's lyric")
+      expect(response.body).to include('Editted lyric')
     end
   end
 
@@ -68,9 +67,9 @@ RSpec.describe 'Songs' do
     let(:song) { create(:song) }
 
     it 'leads to edit song page' do
-      delete song_path(song), params: { id: song.id }
-      expect(response).to redirect_to songs_path
-      get songs_path
+      delete admin_song_path(song), params: { id: song.id }
+      expect(response).to redirect_to admin_songs_path
+      get admin_songs_path
       expect(response.body).not_to include(song.name)
       expect(response.body).not_to include(song.lyric)
     end

@@ -1,4 +1,6 @@
-= form_with(model: @genre) do |form|
+h1 New genre
+
+= form_with scope: :genre, url: admin_genres_path do |form|
   - if @genre.errors.any?
     div style="color: red"
       h2 = "#{pluralize(@genre.errors.count, "error")} prohibited this genre from being saved:"
@@ -12,3 +14,8 @@
 
   div
     = form.submit
+
+br
+
+div
+  = link_to "Back to genres", admin_genres_path

@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   get 'welcome/index'
   root 'welcome#index'
 
-  resources :genres
-  resources :songs
+  namespace :admin do
+    resources :genres
+    resources :songs
+  end
 
   namespace :api do
     resources :songs, only: [:index, :show]
