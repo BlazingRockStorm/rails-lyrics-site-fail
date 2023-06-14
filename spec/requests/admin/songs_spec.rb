@@ -55,11 +55,11 @@ RSpec.describe 'Songs' do
     let(:song) { create(:song) }
 
     it "edit the song's name" do
-      put admin_song_path(song), params: { id: song.id, song: { name: 'Editted song', lyric: "Editted lyric", genre: } }
+      put admin_song_path(song), params: { id: song.id, song: { name: 'Editted song', lyric: 'Editted lyric', genre: } }
       expect(response).to redirect_to admin_song_path(song)
       get admin_song_path(song)
       expect(response.body).to include('Editted song')
-      expect(response.body).to include("Editted lyric")
+      expect(response.body).to include('Editted lyric')
     end
   end
 
