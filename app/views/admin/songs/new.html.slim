@@ -1,4 +1,6 @@
-= form_with(model: @song) do |form|
+h1 New song
+
+= form_with scope: :genre, url: admin_songs_path do |form|
   - if @song.errors.any?
     div style="color: red"
       h2 = "#{pluralize(@song.errors.count, "error")} prohibited this song from being saved:"
@@ -20,3 +22,9 @@
 
   div
     = form.submit
+
+
+br
+
+div
+  = link_to "Back to songs", admin_songs_path

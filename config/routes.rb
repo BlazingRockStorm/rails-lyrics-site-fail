@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :genres
+    resources :songs
   end
-  resources :songs
 
   namespace :api do
     resources :songs, only: [:index, :show]
