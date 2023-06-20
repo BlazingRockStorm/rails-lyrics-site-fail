@@ -28,6 +28,8 @@ gem 'html2slim'
 gem 'bootstrap', '~> 5.3.0.alpha3'
 # Use jQuery
 gem 'jquery-rails'
+# Use Importmap
+gem 'importmap-rails'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
