@@ -8,6 +8,13 @@
 - RSpec for test
 - Coding Convention, Code Coverage
 
+## Install
+- Clone the repository
+- Run `docker-compose build`
+- Run `docker-compose bundle`
+- Run `docker-compose rails assets:precompile`
+- Run `docker-compose up`
+
 ## Why
 
 ### Github:
