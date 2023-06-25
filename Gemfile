@@ -22,7 +22,14 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'slim-rails'
+# Use Slim
 gem 'html2slim'
+# Use Bootstrap
+gem 'bootstrap', '~> 5.3.0.alpha3'
+# Use jQuery
+gem 'jquery-rails'
+# Use Importmap
+gem 'importmap-rails'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
